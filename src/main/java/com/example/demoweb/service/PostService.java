@@ -3,16 +3,19 @@ package com.example.demoweb.service;
 import com.example.demoweb.model.Post;
 import org.springframework.stereotype.*;
 
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
+
 @Service
 public class PostService {
-    public List<Post> listAllPosts(){
-        Post p1=new Post("Тут был хороший борщ, с капусткой, но не красный", new Date());
-        Post p2 =new Post("А сегодня в завтрашний день не все смотреть могут", new Date());
-        Post p3= new Post("В жизни полно лжи и грязи, она не так красива. Даже твой лучший друг может не поделиться пивом", new Date());
-        return Arrays.asList(p1,p2,p3);
+    private ArrayList<Post> posts= new ArrayList<>(Arrays.asList(new Post("Тут был хороший борщ, с капусткой, но не красный", new Date()),
+            new Post("А сегодня в завтрашний день не все смотреть могут", new Date()),
+            new Post("В жизни полно лжи и грязи, она не так красива. Даже твой лучший друг может не поделиться пивом", new Date())));
+    public ArrayList<Post> listAllPosts(){
+
+        return posts;
+    }
+
+    public void create(String text) {
+        posts.add(new Post(text, new Date()));
     }
 }
